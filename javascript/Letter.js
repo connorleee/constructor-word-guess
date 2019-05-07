@@ -8,14 +8,14 @@
 var Letter = function(targetLetter){
     this.correctLetter = targetLetter
     this.isGuessed = false
-    this.guessCheck = function(){
+    this.display = function(){
         if(this.isGuessed){
             return this.correctLetter
         } else {
             return "_ "
         }
     }
-    this.displayString = function(guess){
+    this.boolCheck = function(guess){
         if(guess === this.correctLetter){
             this.isGuessed = true
         }
@@ -25,14 +25,14 @@ var Letter = function(targetLetter){
 
 // Initial testing below
 
-// var targetLetter1 = new Letter("T")
-// var targetLetter2 = new Letter("E")
-// var targetLetter3 = new Letter("X")
-// var targetLetter4 = new Letter("T")
+    // var targetLetter1 = new Letter("T")
+    // var targetLetter2 = new Letter("E")
+    // var targetLetter3 = new Letter("X")
+    // var targetLetter4 = new Letter("T")
 
-// var guess = process.argv[2]
+    // var guess = process.argv[2]
 
-// targetLetter1.displayString(guess)
-// console.log(targetLetter1.guessCheck())
+    // targetLetter1.boolCheck(guess)
+    // console.log(targetLetter1.display())
 
 module.exports = Letter
