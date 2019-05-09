@@ -5,7 +5,7 @@
 // create funciton that takes a character as argument and checks it against strings.
     // if matched, change boolean to display string
 
-var Letter = function(targetLetter){
+const Letter = function(targetLetter){
     this.correctLetter = targetLetter
     this.isGuessed = false
     this.display = function(){
