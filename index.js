@@ -65,6 +65,10 @@ function inquirePrompts(target) {
 
     console.log(target.wordStatus())
 
+    if (isEnded) {
+        playGame()
+    }
+
     inquirer
         .prompt([
             {
@@ -76,13 +80,14 @@ function inquirePrompts(target) {
         ])
         .then(answers => {
             const input = answers.guess
-            
+
             // replaces "_" with correct letter if correct and switches isGuessed to true
             target.guessCheck(input)
-            
-            console.log(target.letterArr)
+
+            // console.log(target.letterArr)
 
             inquirePrompts(target)
+
         });
 }
 
