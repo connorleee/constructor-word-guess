@@ -1,7 +1,7 @@
 const inquirer = require("inquirer")
 const prompt = require("prompt")
 const Word = require("./Word")
-const Letter = require("./Letter")
+// const Letter = require("./Letter")
 
 // In prompt, make sure to add cases that won't accept anything that is not a letter.
 // Figure out logic with cap or lower case
@@ -50,23 +50,41 @@ function playGame() {
     // Define target word object from the rndWord
     const TargetWord = new Word(playWord)
 
-    inquirePrompts()
-
+    inquirePrompts(TargetWord)
 }
 
-function inquirePrompts(){
+function endCase(value) {
+    return value === true
+}
+
+function inquirePrompts(target) {
+    // condition for while loop. checks to see if every letter is guessed
+    let isEnded = target.letterArr.every(endCase)
+    console.log(isEnded)
+    
+    console.log(target.wordStatus())
+
     inquirer
         .prompt([
             {
                 name: "guess",
                 message: "Guess a letter!",
                 type: "input",
-                choices: allowableGuesses
+                // choices: allowableGuesses
             }
         ])
         .then(answers => {
-            console.log(answers.guess)
-            // Use user feedback for... whatever!!
+            const input = answers.guess
+
+
+
+            // console.log(input)
+            console.log(target.letterArr)
+
+            // replaces "_" with correct letter if correct
+            target.guessCheck(input)
+            
+            inquirePrompts(target)
         });
 }
 

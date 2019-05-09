@@ -22,17 +22,4 @@ const Letter = function(targetLetter){
     }
 }
 
-
-// Initial testing below
-
-    // var targetLetter1 = new Letter("T")
-    // var targetLetter2 = new Letter("E")
-    // var targetLetter3 = new Letter("X")
-    // var targetLetter4 = new Letter("T")
-
-    // var guess = process.argv[2]
-
-    // targetLetter1.boolCheck(guess)
-    // console.log(targetLetter1.display())
-
 module.exports = Letter

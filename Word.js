@@ -22,20 +22,13 @@ const Word = function(targetWord){
         return currentWord
     }
     
-    this.guessCheck = function(character){
+    this.guessCheck = function(guess){
         for (let k = 0; k < this.letterArr.length; k++) {
-            this.letterArr[k].boolCheck(character)
+            this.letterArr[k].boolCheck(guess)
         }
 
-        return "guess: " + character
+        return "guess: " + guess
     }
 }
-
-// Testing below
-    // let word1 = new Word("torment")
-
-    // console.log(word1.wordStatus())
-    // console.log(word1.guessCheck('t'))
-    // console.log(word1.wordStatus())
 
 module.exports = Word
