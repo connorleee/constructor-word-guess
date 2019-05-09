@@ -26,4 +26,17 @@ const Letter = function(targetLetter){
     }
 }
 
+// Testing Below
+
+    // let guess1 = process.argv[2]
+    // let target = new Letter("s")
+
+    // console.log(target.isGuessed)
+    // console.log(target.display())
+
+    // target.boolCheck(guess1)
+
+    // console.log(target.isGuessed)
+    // console.log(target.display())
+
 module.exports = Letter

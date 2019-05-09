@@ -28,8 +28,6 @@ const Word = function(targetWord){
         for (let k = 0; k < this.letterArr.length; k++) {
             this.letterArr[k].boolCheck(guess)
         }
-
-        return "guess: " + guess
     }
 }
 

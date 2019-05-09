@@ -55,14 +55,14 @@ function playGame() {
 
 // used in the every() method for the condition where user guesses all letters. boolean.
 function endCase(value) {
-    return value === true
+    return value.isGuessed === true
 }
 
 function inquirePrompts(target) {
     // condition for while loop. checks to see if every letter is guessed
     let isEnded = target.letterArr.every(endCase)
     console.log(isEnded)
-    
+
     console.log(target.wordStatus())
 
     inquirer
@@ -76,15 +76,12 @@ function inquirePrompts(target) {
         ])
         .then(answers => {
             const input = answers.guess
-
-
-
-            // console.log(input)
-            console.log(target.letterArr)
-
-            // replaces "_" with correct letter if correct
+            
+            // replaces "_" with correct letter if correct and switches isGuessed to true
             target.guessCheck(input)
             
+            console.log(target.letterArr)
+
             inquirePrompts(target)
         });
 }
