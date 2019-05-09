@@ -53,6 +53,7 @@ function playGame() {
     inquirePrompts(TargetWord)
 }
 
+// used in the every() method for the condition where user guesses all letters. boolean.
 function endCase(value) {
     return value === true
 }
