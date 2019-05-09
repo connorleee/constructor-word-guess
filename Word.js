@@ -13,6 +13,7 @@ const Word = function(targetWord){
         this.letterArr.push(letter)        
     }
 
+    // Displays the full word state 
     this.wordStatus = function(){
         let currentWord = ""
         for (let j = 0; j < this.letterArr.length; j++) {
@@ -22,6 +23,7 @@ const Word = function(targetWord){
         return currentWord
     }
     
+    // checks if the guess matches the letter of any of the letter objects
     this.guessCheck = function(guess){
         for (let k = 0; k < this.letterArr.length; k++) {
             this.letterArr[k].boolCheck(guess)
