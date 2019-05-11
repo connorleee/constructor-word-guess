@@ -27,7 +27,6 @@ const wordList = [
 ]
 let playWord
 
-
 function rndWord() {
     let choicesQty = wordList.length
     let choiceIndex = Math.floor(Math.random() * choicesQty)
@@ -39,6 +38,7 @@ function rndWord() {
 function playGame() {
     rndWord()
     console.log(playWord) /* Here for testing */
+    console.log("\n~~~~~~~~~~~~~~~~~~~~~~\nGuess the car manufacturer!\n~~~~~~~~~~~~~~~~~~~~~~\n")
 
     // Define target word object from the rndWord
     const TargetWord = new Word(playWord)
@@ -54,14 +54,20 @@ function endCase(value) {
 function inquirePrompts(target) {
     // condition for while loop. checks to see if every letter is guessed
     let isEnded = target.letterArr.every(endCase)
-    console.log(isEnded)
 
     console.log(target.wordStatus())
+    console.log(`Incorrect guesses remaining: ${target.remainingIncorrect}\n`)
 
     if (isEnded) {
+        console.clear()
+        console.log("You Won the last round!")
+        playGame()
+    } else if (target.remainingIncorrect < 1){
+        console.clear()
+        console.log("You lost the last round!")
         playGame()
     } else {
-
+        target.remainingIncorrect--
         inquirer
             .prompt([
                 {
@@ -81,7 +87,7 @@ function inquirePrompts(target) {
                 // replaces "_" with correct letter if correct and switches isGuessed to true
                 target.guessCheck(input)
 
-                console.log(target.allowableGuesses)
+                // console.log(target.allowableGuesses)
 
                 inquirePrompts(target)
 

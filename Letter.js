@@ -15,7 +15,7 @@ const Letter = function(targetLetter){
     this.boolCheck = function(guess){
         if(guess === this.correctLetter){
             this.isGuessed = true
-        }
+        } 
     }
 }
 
