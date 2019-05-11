@@ -1,12 +1,10 @@
-// Create array of new Letter objects representing letters of the word to guess. (string length)
-// create function that returns string representing the word. calls the function on each letter object
-    // displays character or underscore
-    // concatenates all together
-// create function that takes a character as argument and calls the guess function on each letter object
-
 const Letter = require("./Letter")
 
 const Word = function(targetWord){
+
+    // allowable guesses used for validation in inquirer
+    this.allowableGuesses = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     this.letterArr = []
     for (let i = 0; i < targetWord.length; i++) {
         let letter = new Letter(targetWord[i])
@@ -28,6 +26,10 @@ const Word = function(targetWord){
         for (let k = 0; k < this.letterArr.length; k++) {
             this.letterArr[k].boolCheck(guess)
         }
+
+        // removes the guessed letter from allowable guesses
+        let index = this.allowableGuesses.indexOf(guess)
+        this.allowableGuesses.splice(index, 1)
     }
 }
 

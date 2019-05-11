@@ -1,10 +1,5 @@
 const inquirer = require("inquirer")
-const prompt = require("prompt")
 const Word = require("./Word")
-// const Letter = require("./Letter")
-
-// In prompt, make sure to add cases that won't accept anything that is not a letter.
-// Figure out logic with cap or lower case
 
 const wordList = [
     "audi",
@@ -30,8 +25,6 @@ const wordList = [
     "volkswagon",
     "volvo"
 ]
-const allowableGuesses = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 let playWord
 
 
@@ -75,7 +68,11 @@ function inquirePrompts(target) {
                 name: "guess",
                 message: "Guess a letter!",
                 type: "input",
-                // choices: allowableGuesses
+                validate: function(value){
+                    if(target.allowableGuesses.includes(value)){
+                        return true
+                    }
+                }
             }
         ])
         .then(answers => {
@@ -84,7 +81,7 @@ function inquirePrompts(target) {
             // replaces "_" with correct letter if correct and switches isGuessed to true
             target.guessCheck(input)
 
-            // console.log(target.letterArr)
+            console.log(target.allowableGuesses)
 
             inquirePrompts(target)
 
