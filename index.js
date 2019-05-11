@@ -60,32 +60,33 @@ function inquirePrompts(target) {
 
     if (isEnded) {
         playGame()
-    }
+    } else {
 
-    inquirer
-        .prompt([
-            {
-                name: "guess",
-                message: "Guess a letter!",
-                type: "input",
-                validate: function(value){
-                    if(target.allowableGuesses.includes(value)){
-                        return true
+        inquirer
+            .prompt([
+                {
+                    name: "guess",
+                    message: "Guess a letter!",
+                    type: "input",
+                    validate: function (value) {
+                        if (target.allowableGuesses.includes(value)) {
+                            return true
+                        }
                     }
                 }
-            }
-        ])
-        .then(answers => {
-            const input = answers.guess
+            ])
+            .then(answers => {
+                const input = answers.guess
 
-            // replaces "_" with correct letter if correct and switches isGuessed to true
-            target.guessCheck(input)
+                // replaces "_" with correct letter if correct and switches isGuessed to true
+                target.guessCheck(input)
 
-            console.log(target.allowableGuesses)
+                console.log(target.allowableGuesses)
 
-            inquirePrompts(target)
+                inquirePrompts(target)
 
-        });
+            });
+    }
 }
 
 playGame()
